@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-import IconText from '../components/IconText'
+import IconText from '../components/IconText';
+import AuctionList from '../components/AuctionList'
 
 export default class MyCarDetailScreen extends Component {
     constructor(props) {
@@ -61,6 +62,12 @@ export default class MyCarDetailScreen extends Component {
                             />
                     </View>
                 </View>
+
+                <View>
+
+                    <AuctionList/>
+                </View>
+
             </View>
         )
     }

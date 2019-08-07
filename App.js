@@ -6,6 +6,7 @@ import {createBottomTabNavigator, createStackNavigator, createAppContainer} from
 
 import MyCarListScreen from './src/screens/MyCarListScreen';
 import MyCarDetailScreen from './src/screens/MyCarDetailScreen';
+import MyCarAddScreen from './src/screens/MyCarAddScreen';
 
 const auction = function tempAuction(){
   return(
@@ -32,7 +33,11 @@ const MyCarStack = createStackNavigator({
   },
   'MyCarDetail' : {
     screen: MyCarDetailScreen
+  },
+  'MyCarAdd' : {
+    screen: MyCarAddScreen
   }
+
 
 },
 {

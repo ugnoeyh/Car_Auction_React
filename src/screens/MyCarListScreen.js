@@ -44,8 +44,7 @@ export default class MyCarListScreen extends React.Component {
           style={{ padding: 5, paddingRight: 15 }}
 
           onPress={() => {
-            console.log("오른쪽 + 버튼 토글");
-            
+            navigation.push('MyCarAdd')
           }}
         >
           <Ionicons name={'ios-add'} size={35} color={'white'} />
