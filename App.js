@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import {createBottomTabNavigator, createStackNavigator, createAppContainer} from 'react-navigation';
 
+import LoginScreen from './src/screens/LoginScreen';
 import MyCarListScreen from './src/screens/MyCarListScreen';
 import MyCarDetailScreen from './src/screens/MyCarDetailScreen';
 import MyCarAddScreen from './src/screens/MyCarAddScreen';
@@ -28,6 +29,9 @@ const defaultNavigationOptions = {
 
 
 const MyCarStack = createStackNavigator({
+  'Login' : {
+    screen: LoginScreen
+  },
   'MyCarList':{
     screen: MyCarListScreen
   },

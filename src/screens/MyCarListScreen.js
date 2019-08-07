@@ -3,6 +3,7 @@ import { View, Text, FlatList, TouchableOpacity, Image, AsyncStorage } from 'rea
 import { Ionicons } from '@expo/vector-icons';
 
 import CarList from '../components/CarList'
+import { NavigationEvents } from 'react-navigation';
 
 
 const mockData = [
@@ -31,12 +32,13 @@ export default class MyCarListScreen extends React.Component {
     this.state = {
       myCarList: mockData
     };
-  }
+    this.initMyCar()
+   }
 
   initMyCar = async () => {
     let carList = await AsyncStorage.getItem("myCar");
     if (carList === null) {
-      await AsyncStorage.setItem("myCaar", JSON.stringify(mockData))
+      await AsyncStorage.setItem("myCar", JSON.stringify(mockData))
       carList = mockData;
     }
     else {
@@ -84,6 +86,7 @@ export default class MyCarListScreen extends React.Component {
   render() {
     return (
       <View>
+        <NavigationEvents onWillFocus={payload => this.initMyCar()}/>
         <Text>MyCarList</Text>
         <CarList
           carList={this.state.myCarList}
