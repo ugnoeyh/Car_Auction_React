@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native';
+import React, {Component} from 'react';
+import { View, Text, FlatList, TouchableOpacity, Image, AsyncStorage } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import CarList from '../components/CarList'
@@ -33,7 +33,33 @@ export default class MyCarListScreen extends React.Component {
     };
   }
 
+  initMyCar = async () => {
+    let carList = await AsyncStorage.getItem("myCar");
+    if (carList === null) {
+      await AsyncStorage.setItem("myCaar", JSON.stringify(mockData))
+      carList = mockData;
+    }
+    else {
+      carList = JSON.parse(carList);
+    }
+    this.setState({myCarList: carList})
 
+    carList = await AsyncStorage.getItem("myCar");
+    carList = JSON.parse(carList);
+    this.setState({ myCarList: carList })
+  }
+
+  addMyCar(vin, manufacturer, model, year, image) {
+    const car = {
+      vin: vin,
+      manufacturer: manufacturer,
+      model: model,
+      year: year,
+      image: image
+    }
+    const newCarList = this.state.myCarList.concat(car);
+    this.setState({ carList: newCarList })
+  }
 
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {};
